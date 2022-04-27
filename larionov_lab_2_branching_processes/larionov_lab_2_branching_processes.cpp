@@ -135,11 +135,16 @@ private:
         b = b * b;
         c = c * c;
 
-        bool res1 = a + b == c;
-        bool res2 = a + c == b;
-        bool res3 = b + c == a;
+        if (a + b == c)
+            return true;
 
-        return res1 && res2 && res3;
+        if (a + c == b)
+            return true;
+
+        if (b + c == a)
+            return true;
+
+        return false;
     }
 
     double RadianToDegree(double val) {
@@ -153,66 +158,20 @@ private:
 
     bool IsAcuteAngledTriangle(double a, double b, double c) {
 
-        if (a == b && b == c && a == c) //все стороны равны
-            return true;
-
         double cornerA = GetCorner(a, b, c);
         double cornerB = GetCorner(b, a, c);
         double cornerC = GetCorner(c, a, b);
 
-        //все стороны разные
-        if (a != b && b != c && a != c) { 
-            if (cornerA < 90 && cornerB < 90 && cornerC < 90)
-                return true;
-        }
-
-        //=========================равнобедренный===========================
-        bool res1 = a == b && a > c;
-        bool res2 = a == c && a > b;
-        bool res3 = b == c && b > a;
-
-        if (a == b && cornerC < 90)
-            return true;
-
-        if (a == c && cornerB < 90)
-            return true;
-
-        if (c == b && cornerA < 90)
-            return true;
-
-        return false;
+        return cornerA < 90 && cornerB < 90 && cornerC < 90;
     }
 
     bool IsObtuseTriangle(double a, double b, double c) {
 
-        //=========================равнобедренный===========================
         double cornerA = GetCorner(a, b, c);
         double cornerB = GetCorner(b, a, c);
         double cornerC = GetCorner(c, a, b);
 
-        if (a == b && cornerC > 90)
-            return true;
-
-        if (a == c && cornerB > 90)
-            return true;
-
-        if (c == b && cornerA > 90)
-            return true;
-
-        //все стороны разные
-        if (a != b && b != c && a != c) {
-
-            if (cornerA > 90 && (cornerB > 90 || cornerC > 90))
-                return true;
-
-            if (cornerB > 90 && (cornerA > 90 || cornerC > 90))
-                return true;
-
-            if (cornerC > 90 && (cornerA > 90 || cornerB > 90))
-                return true;
-        }
-
-        return false;
+        return cornerA > 90 || cornerB > 90 || cornerC > 90;
     }
 
 public:
@@ -221,7 +180,7 @@ public:
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handleConsole, White);
 
-        cout << "Определить, может ли быть построен треугольник по введенным длинам сторон." << endl;
+        cout << endl << "Определить, может ли быть построен треугольник по введенным длинам сторон." << endl;
         cout << "Если треугольник можно построить, то определить его тип (прямоугольный, тупоугольный или остроугольный)" << endl << endl;
 
         double a, b, c;
@@ -266,6 +225,7 @@ public:
                 SetConsoleTextAttribute(handleConsole, Red);
             }
 
+            SetConsoleTextAttribute(handleConsole, Yellow);
             cout << "Вид: " << view << endl << endl;
             SetConsoleTextAttribute(handleConsole, White);
              
