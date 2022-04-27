@@ -348,6 +348,68 @@ public:
 
 };
 
+class Task46 {
+
+private:
+    double GetDeg(int h, int m, int s) {
+
+        double sec = (0.5 / 60.0);
+
+        cout << h << " * 30 + " << m << " * 0.5 + " << s << " * " << sec << endl;
+
+        int hours = h * 30;
+        double minutes = m * 0.5;
+        double seconds = s * sec;
+
+        cout << hours << " + " << minutes << " + " << seconds << endl;
+
+        return hours + minutes + seconds;
+    }
+
+public:
+    void Init() {
+
+        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(handleConsole, White);
+
+        cout << "По введенному времени (часы, минуты, секунды)" << endl;
+        cout << "определить угол (в градусах) между положением часовой стрелки" << endl;
+        cout << "в начале суток и ее положением в указанное время." << endl << endl;
+
+        int hour, minute, seconds;
+
+        int MIN_RANDOM = -1000;
+        int MAX_RANDOM = 1000;
+
+        MyRandom myRandom = *new MyRandom();
+
+        if (myRandom.isRandomData()) {
+            hour = myRandom.GetRandom(0, 23);
+            minute = myRandom.GetRandom(0, 59);
+            seconds = myRandom.GetRandom(0, 59);
+        }
+        else {
+
+            MyInput myInput = *new MyInput();
+            hour = myInput.InputIntData("Часы: ", 0, 23);
+            minute = myInput.InputIntData("Минуты: ", 0, 59);
+            seconds = myInput.InputIntData("Секунды: ", 0, 59);
+        }
+
+        SetConsoleTextAttribute(handleConsole, Yellow);
+        cout << endl << "Исходные данные:" << endl;
+        cout << hour << ":" << minute << ":" << seconds << endl << endl;
+
+        cout << "1 час = 360 / 12 = 30°" << endl; 
+        cout << "1 минута = 30° / 60 = 0.5°" << endl;
+        cout << "1 секунда = 0.5° / 60 ~ 0.0083°" << endl << endl;
+
+        SetConsoleTextAttribute(handleConsole, Green);
+
+        cout << "Результат: " << GetDeg(hour, minute, seconds) << "°" << endl << endl;
+    }
+};
+
 int main()
 {
     handleConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -371,7 +433,13 @@ int main()
 
         cout << "16) По введенному номеру месяца определить время года" << endl << endl;
 
-        cout << "36) Вычислить z = max(min(a, b), max(c, d))" << endl ;
+        cout << "36) Вычислить z = max(min(a, b), max(c, d))" << endl << endl;
+
+        cout << "46) По введенному времени (часы, минуты, секунды)" << endl;
+        cout << "определить угол (в градусах) между положением часовой стрелки" << endl;
+        cout << "в начале суток и ее положением в указанное время." << endl << endl;
+
+
         cout << endl << "Для выхода введите \"0\": ";
 
         select = GetLine();
@@ -387,6 +455,10 @@ int main()
         else if (select == "36") {
             Task36 task36 = *new Task36();
             task36.Init();
+        }
+        else if (select == "46") {
+            Task46 task46 = *new Task46();
+            task46.Init();
         }
         else if (select == "0") {
             isGo = false;
