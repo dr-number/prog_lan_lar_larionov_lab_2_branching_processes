@@ -353,15 +353,15 @@ class Task46 {
 private:
     double GetDeg(int h, int m, int s) {
 
-        double sec = (0.5 / 60.0);
+        double sec = 0.5 / 60;
 
-        cout << h << " * 30 + " << m << " * 0.5 + " << s << " * " << sec << endl;
+        cout << h << " * 30° + " << m << " * 0.5° + " << s << " * " << sec << "°" << endl;
 
         int hours = h * 30;
         double minutes = m * 0.5;
         double seconds = s * sec;
 
-        cout << hours << " + " << minutes << " + " << seconds << endl;
+        cout << hours << "° + " << minutes << "° + " << seconds << "°" << endl;
 
         return hours + minutes + seconds;
     }
@@ -396,16 +396,17 @@ public:
             seconds = myInput.InputIntData("Секунды: ", 0, 59);
         }
 
-        SetConsoleTextAttribute(handleConsole, Yellow);
-        cout << endl << "Исходные данные:" << endl;
-        cout << hour << ":" << minute << ":" << seconds << endl << endl;
-
-        cout << "1 час = 360 / 12 = 30°" << endl; 
+        cout << endl << "1 час = 360 / 12 = 30°" << endl;
         cout << "1 минута = 30° / 60 = 0.5°" << endl;
-        cout << "1 секунда = 0.5° / 60 ~ 0.0083°" << endl << endl;
+        cout << "1 секунда = 0.5° / 60 ~ " << (0.5 / 60) << "°" << endl << endl;
+
+
+        SetConsoleTextAttribute(handleConsole, Yellow);
+        cout << "Исходные данные:" << endl;
+        printf("%02d:%02d:%02d\n\n", hour, minute, seconds);
+
 
         SetConsoleTextAttribute(handleConsole, Green);
-
         cout << "Результат: " << GetDeg(hour, minute, seconds) << "°" << endl << endl;
     }
 };
