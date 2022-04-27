@@ -278,6 +278,76 @@ public:
     }
 };
 
+class Task36 {
+private:
+    double Min(double a, double b) {
+        if (a < b) return a;
+        if (a > b) return b;
+
+        return a;
+    }
+
+    double Max(double a, double b) {
+        if (a < b) return b;
+        if (a > b) return a;
+
+        return a;
+    }
+
+public:
+    void Init() {
+
+        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(handleConsole, White);
+
+        cout << "\nВычислить z = max(min(a, b), max(c, d))" << endl;
+
+        double a, b, c, d;
+
+        int MIN_RANDOM = -1000;
+        int MAX_RANDOM = 1000;
+
+        MyRandom myRandom = *new MyRandom();
+
+        if (myRandom.isRandomData()) {
+            a = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
+            b = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
+            c = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
+            d = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
+        }
+        else {
+
+            MyInput myInput = *new MyInput();
+            a = myInput.InputData("Введите число a: ");
+            b = myInput.InputData("Введите число b: ");
+            c = myInput.InputData("Введите число c: ");
+            d = myInput.InputData("Введите число d: ");
+        }
+
+        SetConsoleTextAttribute(handleConsole, Yellow);
+        cout << endl << "Исходные данные:" << endl;
+        cout << "a = " << a << endl;
+        cout << "b = " << b << endl;
+        cout << "c = " << c << endl;
+        cout << "d = " << d << endl << endl;
+
+        SetConsoleTextAttribute(handleConsole, Green);
+
+        double valMin = Min(a, b);
+        cout << "min(a, b) = min(" << a << ", " << b << ") = " << valMin << endl;
+
+        double valMax = Max(c, d);
+        cout << "max(c, d) = min(" << c << ", " << d << ") = " << valMax << endl << endl;
+
+        cout << "z = max(min(a, b), max(c, d))" << endl;
+        cout << "z = max(" << valMin << ", " << valMax << ")" << endl;
+
+        cout << "z = " << Max(valMin, valMax) << endl << endl;
+
+    }
+
+};
+
 int main()
 {
     handleConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -299,8 +369,10 @@ int main()
         cout << "6) Определить, может ли быть построен треугольник по введенным длинам сторон." << endl;
         cout << "Если треугольник можно построить, то определить его тип (прямоугольный, тупоугольный или остроугольный)" << endl << endl;
 
-        cout << "16) По введенному номеру месяца определить время года" << endl;
-        cout << "Для выхода введите \"0\": ";
+        cout << "16) По введенному номеру месяца определить время года" << endl << endl;
+
+        cout << "36) Вычислить z = max(min(a, b), max(c, d))" << endl ;
+        cout << endl << "Для выхода введите \"0\": ";
 
         select = GetLine();
 
@@ -311,6 +383,10 @@ int main()
         else if (select == "16") {
             Task16 task16 = *new Task16();
             task16.Init();
+        }
+        else if (select == "36") {
+            Task36 task36 = *new Task36();
+            task36.Init();
         }
         else if (select == "0") {
             isGo = false;
