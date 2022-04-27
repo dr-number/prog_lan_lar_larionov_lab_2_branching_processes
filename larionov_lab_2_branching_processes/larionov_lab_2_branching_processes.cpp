@@ -283,58 +283,38 @@ public:
 
 class Task16 {
 
+private:
+    string GetTimeYear(int num) {
+
+        if (num >= 3 && num <= 5)
+            return "âåñíà";
+
+        if (num >= 6 && num <= 8)
+            return "ëåòî";
+
+        if (num >= 9 && num <= 11)
+            return "îñåíü";
+        
+        if (num == 12 || num == 1 || num == 2)
+            return "çèìà";
+        
+        SetConsoleTextAttribute(handleConsole, Red);
+        return "íåèçâåñòíî!";
+    }
+
 public:
     void Init() {
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(handleConsole, White);
-
-        bool isGo = true;
-        int select;
-
-        string timeYear;
-
         MyInput myInput = *new MyInput();
-
-        while (isGo)
-        {
-            cout << "\nÏî ââåäåííîìó íîìåğó ìåñÿöà îïğåäåëèòü âğåìÿ ãîäà" << endl;
+      
+        SetConsoleTextAttribute(handleConsole, White);
+        cout << "\nÏî ââåäåííîìó íîìåğó ìåñÿöà îïğåäåëèòü âğåìÿ ãîäà" << endl;
            
-            select = myInput.InputIntData("Ââåäèòå íîìåğ ìåñÿöà: ", 1, 12);
+        int select = myInput.InputIntData("Ââåäèòå íîìåğ ìåñÿöà: ", 1, 12);
 
-            switch (select) {
+        SetConsoleTextAttribute(handleConsole, Green);
+        cout << "Âğåìÿ ãîäà: " << GetTimeYear(select) << endl;
 
-            case 12:
-            case 1:
-            case 2:
-                timeYear = "çèìà"; 
-                break;
-
-            case 3:
-            case 4:
-            case 5:
-                timeYear = "âåñíà";
-                break;
-
-            case 6:
-            case 7:
-            case 8:
-                timeYear = "ëåòî";
-                break;
-
-            case 9:
-            case 10:
-            case 11:
-                timeYear = "îñåíü";
-                break;
-
-            default:
-                SetConsoleTextAttribute(handleConsole, Red);
-                cout << "\nÍåêîğğåêòíûå äàííûå!" << endl;
-                SetConsoleTextAttribute(handleConsole, White);
-                break;
-            }
-
-        }
     }
 };
 
@@ -353,6 +333,7 @@ int main()
 
     while (isGo)
     {
+        SetConsoleTextAttribute(handleConsole, White);
 
         cout << "\nÂâåäèòå íîìåğ çàäà÷è" << endl;
         cout << "6) Îïğåäåëèòü, ìîæåò ëè áûòü ïîñòğîåí òğåóãîëüíèê ïî ââåäåííûì äëèíàì ñòîğîí." << endl;
