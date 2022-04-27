@@ -72,12 +72,12 @@ public:
 
     int InputIntData(string text, int min, int max) {
 
-        int result = 0;
+        double result;
 
         while (true) {
             result = InputData(text);
 
-            if ((int)result != result) {
+            if (result != (int) result) {
                 SetConsoleTextAttribute(handleConsole, Red);
                 cout << endl << "Число должно быть целым!" << endl << endl;
             }
