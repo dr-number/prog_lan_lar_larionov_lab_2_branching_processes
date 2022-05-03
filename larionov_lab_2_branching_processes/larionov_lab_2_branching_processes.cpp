@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <Windows.h>
 #include <string>
 #include <stdlib.h>
@@ -57,11 +57,11 @@ public:
 
             if (!isNumber) {
                 SetConsoleTextAttribute(handleConsole, Red);
-                cout << endl << xStr + " - íå ÷èñëî!" << endl << endl;
+                cout << endl << xStr + " - Ð½Ðµ Ñ‡Ð¸ÑÐ»Ð¾!" << endl << endl;
             }
             else if (result <= 0) {
                 SetConsoleTextAttribute(handleConsole, Red);
-                cout << endl << "×èñëî äîëæíî áûòü áîëüøå íóëÿ!" << endl << endl;
+                cout << endl << "Ð§Ð¸ÑÐ»Ð¾ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð½ÑƒÐ»Ñ!" << endl << endl;
             }
             else
                 break;
@@ -79,11 +79,11 @@ public:
 
             if (result != (int) result) {
                 SetConsoleTextAttribute(handleConsole, Red);
-                cout << endl << "×èñëî äîëæíî áûòü öåëûì!" << endl << endl;
+                cout << endl << "Ð§Ð¸ÑÐ»Ð¾ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ñ†ÐµÐ»Ñ‹Ð¼!" << endl << endl;
             }
             else if (result < min || result > max) {
                 SetConsoleTextAttribute(handleConsole, Red);
-                cout << endl << "×èñëî äîëæíî ëåæàòü â ïðîìåæóòêå [" << min << "; " << max << "]!" << endl << endl;
+                cout << endl << "Ð§Ð¸ÑÐ»Ð¾ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð»ÐµÐ¶Ð°Ñ‚ÑŒ Ð² Ð¿Ñ€Ð¾Ð¼ÐµÐ¶ÑƒÑ‚ÐºÐµ [" << min << "; " << max << "]!" << endl << endl;
             }
             else
                 break;
@@ -102,7 +102,7 @@ public:
     double MIN_RANDOM = 10, MAX_RANDOM = 1000;
 
     bool isRandomData() {
-        cout << "Ñãåíåðèðîâàòü äàííûå ñëó÷àéíûì îáðàçîì [y/n]?" << endl;
+        cout << "Ð¡Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð´Ð°Ð½Ð½Ñ‹Ðµ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð¼ [y/n]?" << endl;
 
         string answer = GetLine();
 
@@ -180,8 +180,8 @@ public:
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handleConsole, White);
 
-        cout << endl << "Îïðåäåëèòü, ìîæåò ëè áûòü ïîñòðîåí òðåóãîëüíèê ïî ââåäåííûì äëèíàì ñòîðîí." << endl;
-        cout << "Åñëè òðåóãîëüíèê ìîæíî ïîñòðîèòü, òî îïðåäåëèòü åãî òèï (ïðÿìîóãîëüíûé, òóïîóãîëüíûé èëè îñòðîóãîëüíûé)" << endl << endl;
+        cout << endl << "ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ, Ð¼Ð¾Ð¶ÐµÑ‚ Ð»Ð¸ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾ÑÑ‚Ñ€Ð¾ÐµÐ½ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ð¿Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ñ‹Ð¼ Ð´Ð»Ð¸Ð½Ð°Ð¼ ÑÑ‚Ð¾Ñ€Ð¾Ð½." << endl;
+        cout << "Ð•ÑÐ»Ð¸ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ, Ñ‚Ð¾ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ ÐµÐ³Ð¾ Ñ‚Ð¸Ð¿ (Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹, Ñ‚ÑƒÐ¿Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹ Ð¸Ð»Ð¸ Ð¾ÑÑ‚Ñ€Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹)" << endl << endl;
 
         double a, b, c;
 
@@ -195,44 +195,44 @@ public:
         else {
             MyInput myInput = *new MyInput();
 
-            a = myInput.InputData("Ââåäèòå ñòîðîíó òðåóãîëüíèêà (à): ");
-            b = myInput.InputData("Ââåäèòå ñòîðîíó òðåóãîëüíèêà (b): ");
-            c = myInput.InputData("Ââåäèòå ñòîðîíó òðåóãîëüíèêà (c): ");
+            a = myInput.InputData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñƒ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ° (Ð°): ");
+            b = myInput.InputData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñƒ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ° (b): ");
+            c = myInput.InputData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñƒ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸ÐºÐ° (c): ");
 
         }
 
         SetConsoleTextAttribute(handleConsole, Yellow);
-        cout << endl << "Äàí òðåóãîëüíèê ñî ñòîðîíàìè:" << endl;
+        cout << endl << "Ð”Ð°Ð½ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº ÑÐ¾ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð°Ð¼Ð¸:" << endl;
         cout << "a = " << a << endl;
         cout << "b = " << b << endl;
         cout << "c = " << c << endl << endl;
 
         if (IsExistTriangle(a, b, c)) {
             SetConsoleTextAttribute(handleConsole, Green);
-            cout << "Äàííûé òðåóãîëüíèê ñóùåñòâóåò:" << endl << endl;
+            cout << "Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚:" << endl << endl;
             SetConsoleTextAttribute(handleConsole, White);
 
             string view;
 
             if (IsRectangularTriangle(a, b, c))
-                view = "ïðÿìîóãîëüíûé";
+                view = "Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹";
             else if(IsAcuteAngledTriangle(a, b, c))
-                view = "îñòðîóãîëüíûé";
+                view = "Ð¾ÑÑ‚Ñ€Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹";
             else if(IsObtuseTriangle(a, b, c))
-                view = "òóïîóãîëüíûé";
+                view = "Ñ‚ÑƒÐ¿Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹";
             else {
-                view = "íåèçâåñòåí";
+                view = "Ð½ÐµÐ¸Ð·Ð²ÐµÑÑ‚ÐµÐ½";
                 SetConsoleTextAttribute(handleConsole, Red);
             }
 
             SetConsoleTextAttribute(handleConsole, Yellow);
-            cout << "Âèä: " << view << endl << endl;
+            cout << "Ð’Ð¸Ð´: " << view << endl << endl;
             SetConsoleTextAttribute(handleConsole, White);
              
         }
         else {
             SetConsoleTextAttribute(handleConsole, Red);
-            cout << "Äàííûé òðåóãîëüíèê íå ñóùåñòâóåò!" << endl << endl;
+            cout << "Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚!" << endl << endl;
             SetConsoleTextAttribute(handleConsole, White);
         }
 
@@ -247,19 +247,19 @@ private:
     string GetTimeYear(int num) {
 
         if (num >= 3 && num <= 5)
-            return "âåñíà";
+            return "Ð²ÐµÑÐ½Ð°";
 
         if (num >= 6 && num <= 8)
-            return "ëåòî";
+            return "Ð»ÐµÑ‚Ð¾";
 
         if (num >= 9 && num <= 11)
-            return "îñåíü";
+            return "Ð¾ÑÐµÐ½ÑŒ";
         
         if (num == 12 || num == 1 || num == 2)
-            return "çèìà";
+            return "Ð·Ð¸Ð¼Ð°";
         
         SetConsoleTextAttribute(handleConsole, Red);
-        return "íåèçâåñòíî!";
+        return "Ð½ÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾!";
     }
 
 public:
@@ -268,12 +268,12 @@ public:
         MyInput myInput = *new MyInput();
       
         SetConsoleTextAttribute(handleConsole, White);
-        cout << "\nÏî ââåäåííîìó íîìåðó ìåñÿöà îïðåäåëèòü âðåìÿ ãîäà" << endl;
+        cout << "\nÐŸÐ¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ð¾Ð¼Ñƒ Ð½Ð¾Ð¼ÐµÑ€Ñƒ Ð¼ÐµÑÑÑ†Ð° Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼Ñ Ð³Ð¾Ð´Ð°" << endl;
            
-        int select = myInput.InputIntData("Ââåäèòå íîìåð ìåñÿöà: ", 1, 12);
+        int select = myInput.InputIntData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð¼ÐµÑÑÑ†Ð°: ", 1, 12);
 
         SetConsoleTextAttribute(handleConsole, Green);
-        cout << "Âðåìÿ ãîäà: " << GetTimeYear(select) << endl;
+        cout << "Ð’Ñ€ÐµÐ¼Ñ Ð³Ð¾Ð´Ð°: " << GetTimeYear(select) << endl;
 
     }
 };
@@ -300,7 +300,7 @@ public:
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handleConsole, White);
 
-        cout << "\nÂû÷èñëèòü z = max(min(a, b), max(c, d))" << endl;
+        cout << "\nÐ’Ñ‹Ñ‡Ð¸ÑÐ»Ð¸Ñ‚ÑŒ z = max(min(a, b), max(c, d))" << endl;
 
         double a, b, c, d;
 
@@ -318,14 +318,14 @@ public:
         else {
 
             MyInput myInput = *new MyInput();
-            a = myInput.InputData("Ââåäèòå ÷èñëî a: ");
-            b = myInput.InputData("Ââåäèòå ÷èñëî b: ");
-            c = myInput.InputData("Ââåäèòå ÷èñëî c: ");
-            d = myInput.InputData("Ââåäèòå ÷èñëî d: ");
+            a = myInput.InputData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ a: ");
+            b = myInput.InputData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ b: ");
+            c = myInput.InputData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ c: ");
+            d = myInput.InputData("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ d: ");
         }
 
         SetConsoleTextAttribute(handleConsole, Yellow);
-        cout << endl << "Èñõîäíûå äàííûå:" << endl;
+        cout << endl << "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ:" << endl;
         cout << "a = " << a << endl;
         cout << "b = " << b << endl;
         cout << "c = " << c << endl;
@@ -355,13 +355,13 @@ private:
 
         double sec = 0.5 / 60;
 
-        cout << h << " * 30° + " << m << " * 0.5° + " << s << " * " << sec << "°" << endl;
+        cout << h << " * 30Â° + " << m << " * 0.5Â° + " << s << " * " << sec << "Â°" << endl;
 
         int hours = h * 30;
         double minutes = m * 0.5;
         double seconds = s * sec;
 
-        cout << hours << "° + " << minutes << "° + " << seconds << "°" << endl;
+        cout << hours << "Â° + " << minutes << "Â° + " << seconds << "Â°" << endl;
 
         return hours + minutes + seconds;
     }
@@ -372,9 +372,9 @@ public:
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handleConsole, White);
 
-        cout << "Ïî ââåäåííîìó âðåìåíè (÷àñû, ìèíóòû, ñåêóíäû)" << endl;
-        cout << "îïðåäåëèòü óãîë (â ãðàäóñàõ) ìåæäó ïîëîæåíèåì ÷àñîâîé ñòðåëêè" << endl;
-        cout << "â íà÷àëå ñóòîê è åå ïîëîæåíèåì â óêàçàííîå âðåìÿ." << endl << endl;
+        cout << "ÐŸÐ¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ð¾Ð¼Ñƒ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ (Ñ‡Ð°ÑÑ‹, Ð¼Ð¸Ð½ÑƒÑ‚Ñ‹, ÑÐµÐºÑƒÐ½Ð´Ñ‹)" << endl;
+        cout << "Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ ÑƒÐ³Ð¾Ð» (Ð² Ð³Ñ€Ð°Ð´ÑƒÑÐ°Ñ…) Ð¼ÐµÐ¶Ð´Ñƒ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÐ¼ Ñ‡Ð°ÑÐ¾Ð²Ð¾Ð¹ ÑÑ‚Ñ€ÐµÐ»ÐºÐ¸" << endl;
+        cout << "Ð² Ð½Ð°Ñ‡Ð°Ð»Ðµ ÑÑƒÑ‚Ð¾Ðº Ð¸ ÐµÐµ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÐ¼ Ð² ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ðµ Ð²Ñ€ÐµÐ¼Ñ." << endl << endl;
 
         int hour, minute, seconds;
 
@@ -391,23 +391,23 @@ public:
         else {
 
             MyInput myInput = *new MyInput();
-            hour = myInput.InputIntData("×àñû: ", 0, 23);
-            minute = myInput.InputIntData("Ìèíóòû: ", 0, 59);
-            seconds = myInput.InputIntData("Ñåêóíäû: ", 0, 59);
+            hour = myInput.InputIntData("Ð§Ð°ÑÑ‹: ", 0, 23);
+            minute = myInput.InputIntData("ÐœÐ¸Ð½ÑƒÑ‚Ñ‹: ", 0, 59);
+            seconds = myInput.InputIntData("Ð¡ÐµÐºÑƒÐ½Ð´Ñ‹: ", 0, 59);
         }
 
-        cout << endl << "1 ÷àñ = 360 / 12 = 30°" << endl;
-        cout << "1 ìèíóòà = 30° / 60 = 0.5°" << endl;
-        cout << "1 ñåêóíäà = 0.5° / 60 ~ " << (0.5 / 60) << "°" << endl << endl;
+        cout << endl << "1 Ñ‡Ð°Ñ = 360 / 12 = 30Â°" << endl;
+        cout << "1 Ð¼Ð¸Ð½ÑƒÑ‚Ð° = 30Â° / 60 = 0.5Â°" << endl;
+        cout << "1 ÑÐµÐºÑƒÐ½Ð´Ð° = 0.5Â° / 60 ~ " << (0.5 / 60) << "Â°" << endl << endl;
 
 
         SetConsoleTextAttribute(handleConsole, Yellow);
-        cout << "Èñõîäíûå äàííûå:" << endl;
+        cout << "Ð˜ÑÑ…Ð¾Ð´Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ:" << endl;
         printf("%02d:%02d:%02d\n\n", hour, minute, seconds);
 
 
         SetConsoleTextAttribute(handleConsole, Green);
-        cout << "Ðåçóëüòàò: " << GetDeg(hour, minute, seconds) << "°" << endl << endl;
+        cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚: " << GetDeg(hour, minute, seconds) << "Â°" << endl << endl;
     }
 };
 
@@ -418,8 +418,8 @@ int main()
 
     SetConsoleTextAttribute(handleConsole, White);
 
-    cout << "Òåìà 2. Ðàçâåòâëÿþùèåñÿ âû÷èñëèòåëüíûå ïðîöåññû" << endl;
-    cout << "Ëàðèîíîâ Íèêèòà Þðüåâè÷. ãð. 110ç" << endl;
+    cout << "Ð¢ÐµÐ¼Ð° 2. Ð Ð°Ð·Ð²ÐµÑ‚Ð²Ð»ÑÑŽÑ‰Ð¸ÐµÑÑ Ð²Ñ‹Ñ‡Ð¸ÑÐ»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ Ð¿Ñ€Ð¾Ñ†ÐµÑÑÑ‹" << endl;
+    cout << "Ð›Ð°Ñ€Ð¸Ð¾Ð½Ð¾Ð² ÐÐ¸ÐºÐ¸Ñ‚Ð° Ð®Ñ€ÑŒÐµÐ²Ð¸Ñ‡. Ð³Ñ€. 110Ð·" << endl;
 
     bool isGo = true;
     string select;
@@ -428,20 +428,20 @@ int main()
     {
         SetConsoleTextAttribute(handleConsole, White);
 
-        cout << "\nÂâåäèòå íîìåð çàäà÷è" << endl;
-        cout << "6) Îïðåäåëèòü, ìîæåò ëè áûòü ïîñòðîåí òðåóãîëüíèê ïî ââåäåííûì äëèíàì ñòîðîí." << endl;
-        cout << "Åñëè òðåóãîëüíèê ìîæíî ïîñòðîèòü, òî îïðåäåëèòü åãî òèï (ïðÿìîóãîëüíûé, òóïîóãîëüíûé èëè îñòðîóãîëüíûé)" << endl << endl;
+        cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð·Ð°Ð´Ð°Ñ‡Ð¸" << endl;
+        cout << "6) ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ, Ð¼Ð¾Ð¶ÐµÑ‚ Ð»Ð¸ Ð±Ñ‹Ñ‚ÑŒ Ð¿Ð¾ÑÑ‚Ñ€Ð¾ÐµÐ½ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ð¿Ð¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ñ‹Ð¼ Ð´Ð»Ð¸Ð½Ð°Ð¼ ÑÑ‚Ð¾Ñ€Ð¾Ð½." << endl;
+        cout << "Ð•ÑÐ»Ð¸ Ñ‚Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ, Ñ‚Ð¾ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ ÐµÐ³Ð¾ Ñ‚Ð¸Ð¿ (Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹, Ñ‚ÑƒÐ¿Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹ Ð¸Ð»Ð¸ Ð¾ÑÑ‚Ñ€Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ñ‹Ð¹)" << endl << endl;
 
-        cout << "16) Ïî ââåäåííîìó íîìåðó ìåñÿöà îïðåäåëèòü âðåìÿ ãîäà" << endl << endl;
+        cout << "16) ÐŸÐ¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ð¾Ð¼Ñƒ Ð½Ð¾Ð¼ÐµÑ€Ñƒ Ð¼ÐµÑÑÑ†Ð° Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ Ð²Ñ€ÐµÐ¼Ñ Ð³Ð¾Ð´Ð°" << endl << endl;
 
-        cout << "36) Âû÷èñëèòü z = max(min(a, b), max(c, d))" << endl << endl;
+        cout << "36) Ð’Ñ‹Ñ‡Ð¸ÑÐ»Ð¸Ñ‚ÑŒ z = max(min(a, b), max(c, d))" << endl << endl;
 
-        cout << "46) Ïî ââåäåííîìó âðåìåíè (÷àñû, ìèíóòû, ñåêóíäû)" << endl;
-        cout << "îïðåäåëèòü óãîë (â ãðàäóñàõ) ìåæäó ïîëîæåíèåì ÷àñîâîé ñòðåëêè" << endl;
-        cout << "â íà÷àëå ñóòîê è åå ïîëîæåíèåì â óêàçàííîå âðåìÿ." << endl << endl;
+        cout << "46) ÐŸÐ¾ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ð¾Ð¼Ñƒ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ (Ñ‡Ð°ÑÑ‹, Ð¼Ð¸Ð½ÑƒÑ‚Ñ‹, ÑÐµÐºÑƒÐ½Ð´Ñ‹)" << endl;
+        cout << "Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»Ð¸Ñ‚ÑŒ ÑƒÐ³Ð¾Ð» (Ð² Ð³Ñ€Ð°Ð´ÑƒÑÐ°Ñ…) Ð¼ÐµÐ¶Ð´Ñƒ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÐ¼ Ñ‡Ð°ÑÐ¾Ð²Ð¾Ð¹ ÑÑ‚Ñ€ÐµÐ»ÐºÐ¸" << endl;
+        cout << "Ð² Ð½Ð°Ñ‡Ð°Ð»Ðµ ÑÑƒÑ‚Ð¾Ðº Ð¸ ÐµÐµ Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸ÐµÐ¼ Ð² ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ðµ Ð²Ñ€ÐµÐ¼Ñ." << endl << endl;
 
 
-        cout << endl << "Äëÿ âûõîäà ââåäèòå \"0\": ";
+        cout << endl << "Ð”Ð»Ñ Ð²Ñ‹Ñ…Ð¾Ð´Ð° Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ \"0\": ";
 
         select = GetLine();
 
@@ -466,7 +466,7 @@ int main()
         }
         else {
             SetConsoleTextAttribute(handleConsole, Red);
-            cout << "\nÍåêîððåêòíûå äàííûå!" << endl;
+            cout << "\nÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ!" << endl;
             SetConsoleTextAttribute(handleConsole, White);
         }
 
