@@ -363,6 +363,16 @@ class Task26 {
 private:
     const int MIN = 10;
     const int MAX = 1000;
+
+    void PrintData(string type, string data) {
+        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(handleConsole, Yellow);
+
+        cout << type << " ";
+
+        SetConsoleTextAttribute(handleConsole, Green);
+        cout << data << endl;
+    }
 public:
     void Init() {
 
@@ -406,9 +416,23 @@ public:
                 }
                 else
                     isGo = false;
-            }
-            
+            }   
         }
+
+        SetConsoleTextAttribute(handleConsole, Yellow);
+        cout << "\nДан треугольник со сторонами:" << endl;
+
+        PrintData("a: ", to_string(a));
+        PrintData("b: ", to_string(b));
+        PrintData("c: ", to_string(c));
+
+        double cornerC = myGeometry.GetCorner(c, a, b);
+
+        PrintData("Угол С: ", to_string(cornerC));
+
+
+
+
     }
 };
 
