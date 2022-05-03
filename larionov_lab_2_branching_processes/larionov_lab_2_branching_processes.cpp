@@ -190,12 +190,8 @@ public:
 
 };
 
-class Task6 {
-
-private:
-    const int MIN = MyRandom::MIN_RANDOM;
-    const int MAX = MyRandom::MAX_RANDOM;
-
+class MyGeometry {
+public:
     bool IsExistTriangle(double a, double b, double c) {
 
         bool res1 = a + b > c;
@@ -203,7 +199,7 @@ private:
         bool res3 = b + c > a;
 
         return res1 && res2 && res3;
-   }
+    }
 
     bool IsRectangularTriangle(double a, double b, double c) {
 
@@ -249,6 +245,13 @@ private:
 
         return cornerA > 90 || cornerB > 90 || cornerC > 90;
     }
+};
+
+class Task6 {
+
+private:
+    const int MIN = MyRandom::MIN_RANDOM;
+    const int MAX = MyRandom::MAX_RANDOM;
 
 public:
     void Init() {
@@ -283,18 +286,20 @@ public:
         cout << "b = " << b << endl;
         cout << "c = " << c << endl << endl;
 
-        if (IsExistTriangle(a, b, c)) {
+        MyGeometry myGeometry = *new MyGeometry();
+
+        if (myGeometry.IsExistTriangle(a, b, c)) {
             SetConsoleTextAttribute(handleConsole, Green);
             cout << "Данный треугольник существует:" << endl << endl;
             SetConsoleTextAttribute(handleConsole, White);
 
             string view;
 
-            if (IsRectangularTriangle(a, b, c))
+            if (myGeometry.IsRectangularTriangle(a, b, c))
                 view = "прямоугольный";
-            else if(IsAcuteAngledTriangle(a, b, c))
+            else if(myGeometry.IsAcuteAngledTriangle(a, b, c))
                 view = "остроугольный";
-            else if(IsObtuseTriangle(a, b, c))
+            else if(myGeometry.IsObtuseTriangle(a, b, c))
                 view = "тупоугольный";
             else {
                 view = "неизвестен";
@@ -351,6 +356,59 @@ public:
         SetConsoleTextAttribute(handleConsole, Green);
         cout << "Время года: " << GetTimeYear(select) << endl;
 
+    }
+};
+
+class Task26 {
+private:
+    const int MIN = 10;
+    const int MAX = 1000;
+public:
+    void Init() {
+
+        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(handleConsole, White);
+
+        cout << "Определить, из круга какого наименьшего радиуса можно вырезать треугольник со сторонами a,b,c." << endl;
+        cout << "Указание: пусть c – большая из сторон треугольника" << endl << endl;
+
+        double a, b, c;
+        bool isGo = true;
+
+        MyRandom myRandom = *new MyRandom();
+        MyGeometry myGeometry = *new MyGeometry();
+
+        if (myRandom.isRandomData()) {
+
+            while (isGo) {
+                c = myRandom.GetRandom(MIN, MAX);
+
+                a = myRandom.GetRandom(MIN, c - 1);
+                b = myRandom.GetRandom(MIN, c - 1);
+
+                isGo = !myGeometry.IsExistTriangle(a, b, c);
+            }
+        }
+        else {
+
+            MyInput myInput = *new MyInput();
+
+            while (isGo) {
+                c = myInput.InputData("Введите сторону c: ", MIN, MAX);
+
+                a = myInput.InputData("Введите сторону a: ", MIN, c - 1);
+                b = myInput.InputData("Введите сторону b: ", MIN, c - 1);
+
+                if (!myGeometry.IsExistTriangle(a, b, c)) {
+                    SetConsoleTextAttribute(handleConsole, Red);
+                    cout << "Данный треугольник не существует!" << endl << endl;
+                    SetConsoleTextAttribute(handleConsole, White);
+                }
+                else
+                    isGo = false;
+            }
+            
+        }
     }
 };
 
@@ -507,7 +565,11 @@ int main()
 
         cout << "16) По введенному номеру месяца определить время года" << endl << endl;
 
+        cout << "26) Определить, из круга какого наименьшего радиуса можно вырезать треугольник со сторонами a,b,c." << endl;
+        cout << "Указание: пусть c – большая из сторон треугольника" << endl << endl;
+
         cout << "36) Вычислить z = max(min(a, b), max(c, d))" << endl << endl;
+
 
         cout << "46) По введенному времени (часы, минуты, секунды)" << endl;
         cout << "определить угол (в градусах) между положением часовой стрелки" << endl;
@@ -525,6 +587,10 @@ int main()
         else if (select == "16") {
             Task16 task16 = *new Task16();
             task16.Init();
+        }
+        else if (select == "26") {
+            Task26 task26 = *new Task26();
+            task26.Init();
         }
         else if (select == "36") {
             Task36 task36 = *new Task36();
