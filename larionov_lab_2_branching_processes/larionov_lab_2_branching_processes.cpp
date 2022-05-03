@@ -169,7 +169,7 @@ public:
 
         string answer = GetLine();
 
-        transform(answer.begin(), answer.end(), answer.begin(), tolower);
+        transform(answer.begin(), answer.end(), answer.begin(), ::tolower);
 
         return answer == "y" || answer == "";
     }
@@ -373,6 +373,52 @@ private:
         SetConsoleTextAttribute(handleConsole, Green);
         cout << data << endl;
     }
+
+    double getRSemiPerimeter(double a, double b, double c) {
+
+        double sumABC = Round(a + b + c);
+        string sSumABC = RoundStr(sumABC);
+
+        double p = Round(sumABC / 2);
+        string sP = RoundStr(p);
+
+        cout << "p = (a + b + c) / 2" << endl;
+        cout << "p = (" << a << " + " << b << " + " << c << ") / 2" << endl;
+        cout << "p = (" << sumABC << ") / 2" << endl;
+        cout << "p = " << p << endl << endl;
+
+        double ABC = Round(a * b * c);
+        string sABC = RoundStr(ABC);
+
+        double PA = Round(p - a);
+        string sPA = RoundStr(PA);
+
+        double PB = Round(p - b);
+        string sPB = RoundStr(PB);
+
+        double PC = Round(p - c);
+        string sPC = RoundStr(PC);
+
+        double underRoot = Round(p * PA * PB * PC);
+        string sUnderRoot = RoundStr(underRoot);
+
+        double noRoot = Round(sqrt(underRoot));
+        string sNoRoot = RoundStr(noRoot);
+
+        double divider = Round(underRoot * 4);
+        string sDivider = RoundStr(divider);
+
+        double result = Round(ABC / divider);
+
+        cout << "r = (a * b * c) / (4 * Корень из (p * (p - a) * (p - b) * (p - c))" << endl;
+        cout << "r = (" << a << " * " << b << " * " << c << ") / (4 * Корень из(" << p  << " * (" << p << " - " << a <<") * (" << p << " - " << b << ") * (" << p << " - " << c << "))" << endl;
+        cout << "r = " << ABC << " / (4 * Корень из(" << p << " * " << PA << " * " << PB << " * " << PC << "))" << endl;
+        cout << "r = " << ABC << " / (4 * Корень из " << underRoot << ")" << endl;
+        cout << "r = " << ABC << " / " << divider << endl;
+        cout << "r = " << result << endl;
+
+        return result;
+    }
 public:
     void Init() {
 
@@ -419,6 +465,14 @@ public:
             }   
         }
 
+        double cornerC = myGeometry.GetCorner(c, a, b);
+
+        a = Round(a);
+        b = Round(b);
+        c = Round(c);
+
+        cornerC = Round(cornerC);
+
         SetConsoleTextAttribute(handleConsole, Yellow);
         cout << "\nДан треугольник со сторонами:" << endl;
 
@@ -426,11 +480,35 @@ public:
         PrintData("b: ", to_string(b));
         PrintData("c: ", to_string(c));
 
-        double cornerC = myGeometry.GetCorner(c, a, b);
-
         PrintData("Угол С: ", to_string(cornerC));
 
+        SetConsoleTextAttribute(handleConsole, White);
 
+        cout << "\nТ.к угол С - ";
+        
+
+        if (cornerC > 90) {
+            cout << "тупой" << endl;
+            cout << "=> сторона \"c\" совпадает с диаметром круга" << endl;
+
+            SetConsoleTextAttribute(handleConsole, Green);
+            cout << "d = c" << endl;
+            cout << "r = c/2" << endl;
+
+            cout << "r = " << RoundStr(c) << "/2" << endl;
+            cout << "r = " << RoundStr(c/2) << endl;
+        }
+        else {
+
+            if (cornerC < 90)
+                cout << "острый";
+            else
+                cout << "прямой";
+
+            cout << endl << endl;
+
+            getRSemiPerimeter(a, b, c);
+        }
 
 
     }
