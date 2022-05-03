@@ -376,6 +376,10 @@ private:
 
     double getRSemiPerimeter(double a, double b, double c) {
 
+        string sA = RoundStr(a);
+        string sB = RoundStr(b);
+        string sC = RoundStr(c);
+
         double sumABC = Round(a + b + c);
         string sSumABC = RoundStr(sumABC);
 
@@ -391,31 +395,20 @@ private:
         string sABC = RoundStr(ABC);
 
         double PA = Round(p - a);
-        string sPA = RoundStr(PA);
-
         double PB = Round(p - b);
-        string sPB = RoundStr(PB);
-
         double PC = Round(p - c);
-        string sPC = RoundStr(PC);
-
+       
         double underRoot = Round(p * PA * PB * PC);
-        string sUnderRoot = RoundStr(underRoot);
-
         double noRoot = Round(sqrt(underRoot));
-        string sNoRoot = RoundStr(noRoot);
-
         double divider = Round(underRoot * 4);
-        string sDivider = RoundStr(divider);
-
         double result = Round(ABC / divider);
 
         cout << "r = (a * b * c) / (4 * Корень из (p * (p - a) * (p - b) * (p - c))" << endl;
-        cout << "r = (" << a << " * " << b << " * " << c << ") / (4 * Корень из(" << p  << " * (" << p << " - " << a <<") * (" << p << " - " << b << ") * (" << p << " - " << c << "))" << endl;
-        cout << "r = " << ABC << " / (4 * Корень из(" << p << " * " << PA << " * " << PB << " * " << PC << "))" << endl;
-        cout << "r = " << ABC << " / (4 * Корень из " << underRoot << ")" << endl;
-        cout << "r = " << ABC << " / " << divider << endl;
-        cout << "r = " << result << endl;
+        cout << "r = (" << sA << " * " << sB << " * " << sC << ") / (4 * Корень из(" << sP  << " * (" << sP << " - " << sA <<") * (" << sP << " - " << sB << ") * (" << sP << " - " << sC << "))" << endl;
+        cout << "r = " << sABC << " / (4 * Корень из(" << sP << " * " << RoundStr(PA) << " * " << RoundStr(PB) << " * " << RoundStr(PC) << "))" << endl;
+        cout << "r = " << sABC << " / (4 * Корень из " << RoundStr(underRoot) << ")" << endl;
+        cout << "r = " << sABC << " / " << RoundStr(divider) << endl;
+        cout << "r = " << RoundStr(result) << endl;
 
         return result;
     }
