@@ -1,13 +1,7 @@
 ﻿#include <iostream>
 #include <Windows.h>
-#include <string>
-#include <stdlib.h>
-#include <cctype>
-#include <conio.h>
 #include <random>
-#include <algorithm>
-#include <iomanip>
-#include <cmath>
+#include <regex>
 
 #define PI 3.14159265
 
@@ -30,14 +24,61 @@ string GetLine() {
     return line;
 }
 
+string RoundStr(float var, int after = 2) {
+
+    string s = to_string(var);
+    int size = s.size();
+
+    string result = "";
+    bool isAfter = false;
+    int afterCount = 0;
+
+    for (int i = 0; i < size; ++i) {
+
+        if (afterCount == after)
+            break;
+
+        if (isAfter)
+            ++afterCount;
+
+        if (!isAfter && s[i] == ',')
+            isAfter = true;
+
+        result += s[i];
+
+    }
+
+    return result;
+}
+
+float Round(float var)
+{
+    // 37.66666 * 100 = 3766.66
+    // 3766.66 + .5 = 3767.16 для значения округления
+
+    // затем вводим тип int в значение 3767
+    // затем делим на 100, поэтому значение преобразуется в 37,67
+
+    float value = (int)(var * 100 + .5);
+    return stod(RoundStr((float)value / 100));
+
+}
+
 class MyInput {
 
 public:
+    bool isDouble(string str) {
+        return regex_match(str, regex("^[-]?[0-9]*?,?[0-9]*"));
+    }
 
-    double InputData(string text) {
+    bool isNum(string str) {
+        return regex_match(str, regex("^[-]?[0-9]*"));
+    }
+
+    double InputData(string text, int min, int max, int defaultValue = -1) {
 
         string xStr = "";
-        double x = 0, result = 0;
+        double result = 0;
         bool isNumber = true;
 
         while (true) {
@@ -47,6 +88,10 @@ public:
 
             xStr = GetLine();
 
+            if (xStr == "" && defaultValue != -1)
+                return defaultValue;
+
+
             try {
                 result = stod(xStr.c_str());
                 isNumber = true;
@@ -55,13 +100,13 @@ public:
                 isNumber = false;
             }
 
-            if (!isNumber) {
+            if (!(isNumber && isDouble(xStr))) {
                 SetConsoleTextAttribute(handleConsole, Red);
                 cout << endl << xStr + " - не число!" << endl << endl;
             }
-            else if (result <= 0) {
+            else if (result > max || result < min) {
                 SetConsoleTextAttribute(handleConsole, Red);
-                cout << endl << "Число должно быть больше нуля!" << endl << endl;
+                cout << endl << "Число должно лежать в промежутке [" << min << "; " << max << "]!" << endl << endl;
             }
             else
                 break;
@@ -70,18 +115,36 @@ public:
         return result;
     }
 
-    int InputIntData(string text, int min, int max) {
+    int InputIntData(string text, int min, int max, int defaultValue = -1) {
 
-        double result;
+        string xStr = "";
+        double result = 0;
+        bool isNumber = true;
 
         while (true) {
-            result = InputData(text);
 
-            if (result != (int) result) {
-                SetConsoleTextAttribute(handleConsole, Red);
-                cout << endl << "Число должно быть целым!" << endl << endl;
+            SetConsoleTextAttribute(handleConsole, White);
+            cout << text;
+
+            xStr = GetLine();
+
+            if (xStr == "" && defaultValue != -1)
+                return defaultValue;
+
+
+            try {
+                result = stod(xStr.c_str());
+                isNumber = true;
             }
-            else if (result < min || result > max) {
+            catch (...) {
+                isNumber = false;
+            }
+
+            if (!(isNumber && isNum(xStr))) {
+                SetConsoleTextAttribute(handleConsole, Red);
+                cout << endl << xStr + " - не число!" << endl << endl;
+            }
+            else if (result > max || result < min) {
                 SetConsoleTextAttribute(handleConsole, Red);
                 cout << endl << "Число должно лежать в промежутке [" << min << "; " << max << "]!" << endl << endl;
             }
@@ -99,7 +162,7 @@ public:
 class MyRandom {
 
 public:
-    double MIN_RANDOM = 10, MAX_RANDOM = 1000;
+    static const int MIN_RANDOM = 10, MAX_RANDOM = 1000;
 
     bool isRandomData() {
         cout << "Сгенерировать данные случайным образом [y/n]?" << endl;
@@ -112,7 +175,17 @@ public:
     }
 
     double GetRandom(int min, int max) {
-        return rand() % (max - min) - min;
+
+        random_device random_device; // Источник энтропии.
+        mt19937 generator(random_device()); // Генератор случайных чисел.
+
+        // (Здесь берется одно инициализирующее значение, можно брать больше)
+        uniform_int_distribution<> distribution(min, max); // Равномерное распределение [min, max]
+
+        return distribution(generator);
+
+        //return rand() % (max - min) - min;
+        //return rand() % max + min;
     }
 
 };
@@ -120,6 +193,9 @@ public:
 class Task6 {
 
 private:
+    const int MIN = MyRandom::MIN_RANDOM;
+    const int MAX = MyRandom::MAX_RANDOM;
+
     bool IsExistTriangle(double a, double b, double c) {
 
         bool res1 = a + b > c;
@@ -188,16 +264,16 @@ public:
         MyRandom myRandom = *new MyRandom();
 
         if (myRandom.isRandomData()) {
-            a = myRandom.GetRandom(myRandom.MIN_RANDOM, myRandom.MAX_RANDOM);
-            b = myRandom.GetRandom(myRandom.MIN_RANDOM, myRandom.MAX_RANDOM);
-            c = myRandom.GetRandom(myRandom.MIN_RANDOM, myRandom.MAX_RANDOM);
+            a = myRandom.GetRandom(MIN, MAX);
+            b = myRandom.GetRandom(MIN, MAX);
+            c = myRandom.GetRandom(MIN, MAX);
         }
         else {
             MyInput myInput = *new MyInput();
 
-            a = myInput.InputData("Введите сторону треугольника (а): ");
-            b = myInput.InputData("Введите сторону треугольника (b): ");
-            c = myInput.InputData("Введите сторону треугольника (c): ");
+            a = myInput.InputData("Введите сторону треугольника (а): ", MIN, MAX);
+            b = myInput.InputData("Введите сторону треугольника (b): ", MIN, MAX);
+            c = myInput.InputData("Введите сторону треугольника (c): ", MIN, MAX);
 
         }
 
@@ -280,6 +356,9 @@ public:
 
 class Task36 {
 private:
+    const int MIN = -1000;
+    const int MAX = 1000;
+
     double Min(double a, double b) {
         if (a < b) return a;
         if (a > b) return b;
@@ -304,24 +383,21 @@ public:
 
         double a, b, c, d;
 
-        int MIN_RANDOM = -1000;
-        int MAX_RANDOM = 1000;
-
         MyRandom myRandom = *new MyRandom();
 
         if (myRandom.isRandomData()) {
-            a = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
-            b = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
-            c = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
-            d = myRandom.GetRandom(MIN_RANDOM, MAX_RANDOM);
+            a = myRandom.GetRandom(MIN, MAX);
+            b = myRandom.GetRandom(MIN, MAX);
+            c = myRandom.GetRandom(MIN, MAX);
+            d = myRandom.GetRandom(MIN, MAX);
         }
         else {
 
             MyInput myInput = *new MyInput();
-            a = myInput.InputData("Введите число a: ");
-            b = myInput.InputData("Введите число b: ");
-            c = myInput.InputData("Введите число c: ");
-            d = myInput.InputData("Введите число d: ");
+            a = myInput.InputData("Введите число a: ", MIN, MAX);
+            b = myInput.InputData("Введите число b: ", MIN, MAX);
+            c = myInput.InputData("Введите число c: ", MIN, MAX);
+            d = myInput.InputData("Введите число d: ", MIN, MAX);
         }
 
         SetConsoleTextAttribute(handleConsole, Yellow);
@@ -377,9 +453,6 @@ public:
         cout << "в начале суток и ее положением в указанное время." << endl << endl;
 
         int hour, minute, seconds;
-
-        int MIN_RANDOM = -1000;
-        int MAX_RANDOM = 1000;
 
         MyRandom myRandom = *new MyRandom();
 
