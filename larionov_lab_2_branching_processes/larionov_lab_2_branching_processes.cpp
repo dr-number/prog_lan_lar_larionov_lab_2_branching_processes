@@ -362,7 +362,7 @@ public:
 class Task26 {
 private:
     const int MIN = 10;
-    const int MAX = 1000;
+    const int MAX = 100;
 
     void PrintData(string type, string data) {
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -388,7 +388,7 @@ private:
 
         cout << "p = (a + b + c) / 2" << endl;
         cout << "p = (" << a << " + " << b << " + " << c << ") / 2" << endl;
-        cout << "p = (" << sumABC << ") / 2" << endl;
+        cout << "p = " << sumABC << " / 2" << endl;
         cout << "p = " << p << endl << endl;
 
         double ABC = Round(a * b * c);
@@ -400,14 +400,16 @@ private:
        
         double underRoot = Round(p * PA * PB * PC);
         double noRoot = Round(sqrt(underRoot));
-        double divider = Round(underRoot * 4);
+
+        double divider = Round(noRoot * 4);
         double result = Round(ABC / divider);
 
         cout << "r = (a * b * c) / (4 * Корень из (p * (p - a) * (p - b) * (p - c))" << endl;
         cout << "r = (" << sA << " * " << sB << " * " << sC << ") / (4 * Корень из(" << sP  << " * (" << sP << " - " << sA <<") * (" << sP << " - " << sB << ") * (" << sP << " - " << sC << "))" << endl;
         cout << "r = " << sABC << " / (4 * Корень из(" << sP << " * " << RoundStr(PA) << " * " << RoundStr(PB) << " * " << RoundStr(PC) << "))" << endl;
         cout << "r = " << sABC << " / (4 * Корень из " << RoundStr(underRoot) << ")" << endl;
-        cout << "r = " << sABC << " / " << RoundStr(divider) << endl;
+        cout << "r = " << sABC << " / (4 * " << RoundStr(noRoot) << ")" << endl;
+        cout << "r = " << sABC << " / " << RoundStr(divider) << ")" << endl;
         cout << "r = " << RoundStr(result) << endl;
 
         return result;
@@ -418,7 +420,7 @@ public:
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handleConsole, White);
 
-        cout << "Определить, из круга какого наименьшего радиуса можно вырезать треугольник со сторонами a,b,c." << endl;
+        cout << "Определить, из круга какого наименьшего радиуса можно вырезать треугольник со сторонами a, b, c." << endl;
         cout << "Указание: пусть c – большая из сторон треугольника" << endl << endl;
 
         double a, b, c;
@@ -469,11 +471,11 @@ public:
         SetConsoleTextAttribute(handleConsole, Yellow);
         cout << "\nДан треугольник со сторонами:" << endl;
 
-        PrintData("a: ", to_string(a));
-        PrintData("b: ", to_string(b));
-        PrintData("c: ", to_string(c));
+        PrintData("a: ", RoundStr(a));
+        PrintData("b: ", RoundStr(b));
+        PrintData("c: ", RoundStr(c));
 
-        PrintData("Угол С: ", to_string(cornerC));
+        PrintData("Угол С: ", RoundStr(cornerC));
 
         SetConsoleTextAttribute(handleConsole, White);
 
@@ -660,7 +662,7 @@ int main()
 
         cout << "16) По введенному номеру месяца определить время года" << endl << endl;
 
-        cout << "26) Определить, из круга какого наименьшего радиуса можно вырезать треугольник со сторонами a,b,c." << endl;
+        cout << "26) Определить, из круга какого наименьшего радиуса можно вырезать треугольник со сторонами a, b, c." << endl;
         cout << "Указание: пусть c – большая из сторон треугольника" << endl << endl;
 
         cout << "36) Вычислить z = max(min(a, b), max(c, d))" << endl << endl;
