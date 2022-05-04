@@ -63,3 +63,17 @@
    <p align="center">Угол С - острый</p>
 </p>
 </br>
+
+**36) Вычислить z = max(min(a, b), max(c, d))**
+
+<p align="center">
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/36-1.jpg">
+   <p align="center">Тест №1</p>
+</p>
+</br>
+
+<p align="center">
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/36-2.jpg">
+   <p align="center">Тест №2</p>
+</p>
+</br>
