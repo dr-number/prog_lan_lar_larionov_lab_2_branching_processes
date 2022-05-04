@@ -77,3 +77,25 @@
    <p align="center">Тест №2</p>
 </p>
 </br>
+
+**46) По введенному времени (часы, минуты, секунды)
+определить угол (в градусах) между положением часовой стрелки
+в начале суток и ее положением в указанное время.**
+
+<p align="center">
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/46-1.jpg">
+   <p align="center">Тест №1</p>
+</p>
+</br>
+
+<p align="center">
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/46-2.jpg">
+   <p align="center">Тест №2</p>
+</p>
+</br>
+
+<p align="center">
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/46-3.jpg">
+   <p align="center">Ручной ввод исходных данных</p>
+</p>
+</br>
