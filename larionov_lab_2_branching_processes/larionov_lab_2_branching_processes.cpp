@@ -250,7 +250,7 @@ public:
 class Task6 {
 
 private:
-    const int MIN = MyRandom::MIN_RANDOM;
+    const int MIN = 1;
     const int MAX = MyRandom::MAX_RANDOM;
 
 public:
@@ -633,9 +633,13 @@ public:
         cout << "Исходные данные:" << endl;
         printf("%02d:%02d:%02d\n\n", hour, minute, seconds);
 
+        double dag = GetDeg(hour, minute, seconds);
+
+        if (dag >= 360)
+            dag -= 360;
 
         SetConsoleTextAttribute(handleConsole, Green);
-        cout << "Результат: " << GetDeg(hour, minute, seconds) << "°" << endl << endl;
+        cout << "Результат: " << dag << "°" << endl << endl;
     }
 };
 
