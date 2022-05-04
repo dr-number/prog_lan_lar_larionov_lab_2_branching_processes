@@ -35,18 +35,17 @@
 </figure>
 </br>
 
-**16) Определить прибыль от вклада под p% годовых через N лет  для случаев простых или сложных процентов**
-
+**16) По введенному номеру месяца определить время года**
 
 <p align="center">
-   <img src="https://github.com/dr-number/larionov_lab_5_sub_programms/blob/master/screens/16-1.jpg">
-   <p align="center">Расчет по простым процентам</p>
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/16-1.jpg">
+   <p align="center">Защита от некорректного ввода</p>
 </p>
 </br>
 
 <p align="center">
-   <img src="https://github.com/dr-number/larionov_lab_5_sub_programms/blob/master/screens/16-2.jpg">
-   <p align="center">Расчет по сложным процентам</p>
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/16-2.jpg">
+   <p align="center">Весна</p>
 </p>
 </br>
 
