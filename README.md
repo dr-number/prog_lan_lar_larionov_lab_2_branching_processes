@@ -49,16 +49,17 @@
 </p>
 </br>
 
-**26) Вычислить полярные координаты для точек, лежащих внутри круга радиусом R с центром в начале координат**
+**26) Определить, из круга какого наименьшего радиуса можно вырезать треугольник со сторонами a, b, c.
+Указание: пусть c – большая из сторон треугольника**
 
 <p align="center">
-   <img src="https://github.com/dr-number/larionov_lab_5_sub_programms/blob/master/screens/26-1.jpg">
-   <p align="center">Ручной ввод исходных данных</p>
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/26-1.jpg">
+   <p align="center">Угол С - тупой</p>
 </p>
 </br>
 
 <p align="center">
-   <img src="https://github.com/dr-number/larionov_lab_5_sub_programms/blob/master/screens/26-2.jpg">
-   <p align="center">Исходные данные на основе случайных чисел</p>
+   <img src="https://github.com/dr-number/prog_lan_lar_larionov_lab_2_branching_processes/blob/master/screens/26-2.jpg">
+   <p align="center">Угол С - острый</p>
 </p>
 </br>
